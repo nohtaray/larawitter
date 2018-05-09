@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Tweet;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tweets = Tweet::home();
+        return view('home', [
+            'tweets' => $tweets,
+        ]);
     }
 }
